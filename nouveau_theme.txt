@@ -1,0 +1,295 @@
+== 01. CRÉATION DU THÈME ET DES TEMPLATES ==
+	
+	[CREATION D'UN NOUVEAU THÈME]
+
+	\wordpress\wp-content\themes\ 			Créer un nouveau sous-dossier nommé "nouveau_theme".
+	
+	\wordpress\wp-content\themes\nouveau_theme\ 	Créer de nouveaux fichiers.
+
+----------------------------
+	
+	[IMAGE DU THEME]
+	>> Création d'un nouveau fichier :
+		- SCREENSHOT.png 
+			image représentative du thème - A défaut de pouvoir effectuer une capture d'écran, puisque le thème n'existe pas encore,  nous pouvons y mettre 1 image provisoire.
+		
+----------------------------
+				
+	[FEUILLE DE STYLE]	
+	>> Création d'un nouveau fichier :
+		- STYLE.css 
+			fichier feuille de style pour la mise en forme du site et la zone de commentaire incluant les informations sur le thème.
+			inscrire le code suivant :
+				/*
+				Theme Name: nouveau_theme
+				Author: Moi
+				Description: Description de mon nouveau theme
+				Version: 1.0
+				Text Domain: mondomaine.com
+				*/
+			
+----------------------------	
+			
+	[RESSOURCE]		
+	>> Création d'un nouveau sous-dossier :								
+		- /ASSETS/ 
+			sous-dossier permettant de déposer des ressources (img, css, js, etc.).
+
+	>> Création d'un nouveau sous-dossier :								
+		- /ASSETS/CSS/ 
+			Déposer le fichier bootstrap.min.css.
+
+	>> Création d'un nouveau sous-dossier :								
+		- /ASSETS/JS/ 
+			Déposer le fichier bootstrap.min.js.
+
+----------------------------
+
+	[HEADER]	
+	>> Création d'un nouveau fichier :				
+		- HEADER.php
+			inscrire le code suivant :
+			
+<!doctype html>
+<html>
+  <head <?php language_attributes(); // langue du site ?>>
+    <meta charset="<?php bloginfo( 'charset' ); //charset du site ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title><?php bloginfo( 'name' ); wp_title('-', true, 'right'); ?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php bloginfo('template_directory'); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MON CSS -->
+    <link href="<?php bloginfo('template_directory'); ?>/style.css" rel="stylesheet">
+	
+	<?php wp_head(); // intégre des éléments indispensable à WP. Comme les fichiers css, js, la barre d'administration côté FrontEnd, etc. ?>
+  </head>
+
+  <body <?php body_class(); // correspond plus ou moins au nom de la ressource en classe css. https://codex.wordpress.org/Function_Reference/body_class ?>>		
+				
+  <?php // var_dump(get_defined_vars()); // liste de toutes les variables déclarées. ?>
+	<main role="main">
+  
+----------------------------
+
+	[FOOTER]	
+	>> Création d'un nouveau fichier :				
+		- FOOTER.php 
+			inscrire le code suivant :
+	</main>		
+	<?php wp_footer(); // intégre des éléments indispensable à WP. Comme les fichiers css, js, la barre d'administration côté FrontEnd, etc.. ?>
+	<footer class="container">
+	  <p>&copy; Company 2017-2018</p>
+	</footer>
+	
+	
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/assets/js/bootstrap.min.js"></script>
+	</body>
+</html>
+----------------------------
+
+	[CONTENU]
+	>> Création de 5 nouveaux fichiers :					
+		- INDEX.php (page par défaut)
+		- PAGE.php (page)
+		- SINGLE.php (page des articles)
+		- FRONT-PAGE.php (page d'accueil)
+		- CATEGORY.php (page des catégories) 
+		
+			inscrire le code suivant :											
+			<?php get_header(); // appel du fichier header.php ?>
+			  <div class="container">
+				<!-- Example row of columns -->
+				<div class="row">
+				
+				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+				
+				<div class="col-md-12">
+				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<div class="contenu"><?php the_content(); ?></div>
+				</div>
+				<?php endwhile; else: ?>
+				<div class="col-md-12">
+				<p><?php _e('Sorry, no posts matched your criteria.','nouveau_theme'); ?></p>
+				</div>
+				<?php endif; ?>
+			  </div> <!-- /container -->
+				 
+			<?php get_footer(); // appel du fichier footer.php ?>
+		
+		Explications :
+
+		La boucle <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); the_title(); the_content(); endif; ?> Dans Wordpress, nous mettrons toujours une boucle, même s'il n'y a qu'un seul contenu à récupérer.
+		
+		- HAVE_POSTS() 
+			envoie un booléen pour savoir s’il reste des objets à afficher sur la page en cours. Par exemple, lorsque l’on cherche à lister les derniers articles d’un blog, la fonction renverra true tant que tous les articles récupérés dans la base de données n’auront pas été affichés.
+		
+		- THE_POST();
+			À l’intérieur de la boucle, la fonction the_post() effectue la récupération d’un article. À chaque appel de cette fonction, un curseur interne à WordPress sélectionne l’article suivant dans la liste de ceux que l’on a récupérés. Lorsque le curseur arrivera au dernier article, alors la méthode have_posts() renverra false et la boucle se terminera.
+		
+		- THE_CONTENT();
+			Affiche le contenu
+			
+		- THE_TITLE();
+			Affiche le titre
+			-- GET_THE_TITLE(); (permet de récupérer le titre dans une variable mais pas de l'afficher)
+			
+		- THE_PERMALINK();
+			le lien du contenu.
+
+		- GET_HEADER()
+			permet d'inclure (include/require) le fichier header.php (haut de site)
+			-- wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); : Permet d'appeler le menu principal.
+		
+		- GET_FOOTER()
+			permet d'inclure (include/require) le fichier footer.php (bas du site)
+			
+		- _e( 'Some text to translate and display.', 'textdomain' );
+			La fonction _e() permet de traduire une portion de texte.
+			
+		-  if((is_front_page())
+			permet de savoir si l'affichage correspond à la page d'accueil.
+			nous pourrions ajouter cette ligne => <?php if(is_front_page()) echo "c'est bien l'Accueil"; else "ce n'est pas l'Accueil"; ?>	mais front-page.php s'exécutera automatiquement lorsque la page d'accueil sera affichée.
+			
+------------------------------------------------------------------------------------------------------------------------------------------------
+			
+------------------------------------------------------------------------------------------------------------------------------------------------
+							
+	[BACKOFFICE/THEME]	
+		Allez dans Apparence > Thème > Activer le theme nommé "nouveau_theme".
+		
+	[FRONTOFFICE]	
+		Afficher votre page web en FRONT et vous verrez que notre site s'affiche correctement.
+	
+	[BACKOFFICE/APPARENCE]
+		Comme nous pouvons le constater, notre menu apparence est incomplet, il manque :
+			- les widgets
+			- les menus
+		C'est normal, nous ne pouvons pas avoir de widget si aucune région existe. De même pour les menus. Pour remédier à cela, nous allons ajouter un nouveau fichier : functions.php
+			
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+== 02. INITIALISATION DES RÉGIONS ET DU MENU VIA FUNCTIONS.PHP ==
+	
+[FUNCTIONS]
+	>> Création d'un nouveau fichier :				
+		- FUNCTIONS.php
+			inscrire le code suivant :
+<?php		
+	// require du fichier custom navwalker necessaire au bon affichage du menu bootstrap4 sur WP
+	require_once('bs4navwalker.php');
+	
+	// --- REGION/WIDGET
+	add_action( 'widgets_init', 'nouveau_theme_init_sidebar' ); // j'exécute la fonction nommé "nouveau_theme_init_sidebar".
+	function nouveau_theme_init_sidebar() // fonction qui contient la déclaration de mes régions.
+	{
+		if(function_exists('register_sidebar')) // si la fonction register_sidebar existe (c'est une fonction interne à wordpress), alors je déclare des régions.
+		{
+			register_sidebar( array(
+				'name'          => __( 'region-entete', 'nouveau_theme' ),
+				'id'            => 'region-entete',
+				'description'   => __( 'Add widgets here to appear in your entete region.', 'nouveau_theme' )
+			) );
+			register_sidebar( array(
+				'name'          => __( 'colonne de droite', 'nouveau_theme' ),
+				'id'            => 'colonne-droite',
+				'description'   => __( 'Add widgets here to appear in your colonne droite region.', 'nouveau_theme' )
+			) );
+			register_sidebar( array(
+				'name'          => __( 'region-footer', 'nouveau_theme' ),
+				'id'            => 'region-footer',
+				'description'   => __( 'Add widgets here to appear in your region.', 'nouveau_theme' )
+			) );
+		}
+	}
+
+	// --- MENU
+	add_action( 'init', 'nouveau_theme_init_menu' ); // j'exécute la fonction nommé "nouveau_theme_init_menu".
+	function nouveau_theme_init_menu() // fonction qui contient la déclaration de mes régions.
+	{
+		if(function_exists('register_nav_menu')) // si la fonction register_sidebar existe (c'est une fonction interne à wordpress), alors je déclare des régions.
+		{
+			register_nav_menu( 'primary', __( 'Primary Menu', 'nouveau_theme' ) );
+		}
+	}
+?>
+----------------------------
+
+	[REGION]
+	>> Création d'un nouveau fichier :				
+		- SIDEBAR-ENTETE.php
+			Inscrire le code suivant :
+				<div id="entete">
+					<?php dynamic_sidebar( 'region-entete' ); // appel à la région nommée "region-entete" ?>
+				</div>
+				
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[CONSTRUCTION DU SITE / HEADER]	
+	>> Modification d'un fichier existant :
+		- HEADER.php
+			inscrire le code suivant (après la balise <body>) :
+			
+	<header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		   <a class="navbar-brand" href="<?php echo get_site_url(); // url du site dans backOffice/réglages/généraux. ?>/">NomDuSite</a>
+		   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
+			 <span class="navbar-toggler-icon"></span>
+		   </button>
+		   <?php
+		   wp_nav_menu([
+			 'menu'            => 'principal',
+			 'theme_location'  => 'top',
+			 'container'       => 'div',
+			 'container_id'    => 'bs4navbar',
+			 'container_class' => 'collapse navbar-collapse',
+			 'menu_id'         => false,
+			 'menu_class'      => 'navbar-nav mr-auto',
+			 'depth'           => 2,
+			 'fallback_cb'     => 'bs4navwalker::fallback',
+			 'walker'          => new bs4navwalker()
+		   ]);
+		   ?>
+      </nav>
+	  <?php get_sidebar('entete'); // appel au fichier sidebar-entete.php ?>
+	</header>
+	------------------------------------
+	
+		wp_nav_menu est une fonction permettant d'appeler le menu principal que nous avons déclarer dans le fichier functions.php.
+		Le code Bootstrap4 du menu passe par l'interpretation du fichier bs4navwalker.php lui aussi appelé dans functions.php 
+			
+		Front > Faite un test d'affichage.
+		
+----------------------------
+
+	[CONSTRUCTION DU SITE / FOOTER]	
+	>> Modification d'un fichier existant :
+		- FOOTER.php
+			inscrire le code suivant (après la balise <footer>) :
+			
+				<?php dynamic_sidebar('region-footer'); ?>
+
+		Front > Faite un test d'affichage.
+		
+----------------------------
+
+	[CONSTRUCTION DU SITE / STYLE]	
+	>> Modification d'un fichier existant :
+		- STYLE.css
+			inscrire le code suivant :
+			
+			body {
+			  padding-top: 3.5rem;
+			}
+			body.admin-bar .fixed-top {
+			  top: 32px;
+			}
+
+
+		Front > Faite un test d'affichage.
+		
+------------------------------------------------------------------------------------------------------------------------------------------------

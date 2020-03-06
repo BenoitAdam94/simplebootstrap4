@@ -1,0 +1,54 @@
+/*
+Theme Name: Simple Bootstrap 4
+Theme URI: https://wordpress.org/themes/simplebootstrap4/
+Author: Benoit Adam & Numa Krouchi
+Author URI: https://wordpress.org/
+Description: Simple Bootstrap 4 is a basic theme. It started as a school project.
+Version: 0.1
+Requires at least: 5.3.2
+Requires PHP: 5.2.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: simplebootstrap
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+.red { color:red;}
+.blue { color:blue;}
+.green { color:green;}
+.yellow { color:yellow;}
+
+.dodgerblue { color:dodgerblue;}
+.blueviolet { color:blueviolet;}
+
+.purple { color:purple;}
+.brown { color:brown;}
+.orange { color:orange;}
+.orangered { color:orangered;}
+
+.silver { color:silver;}
+.gold { color:gold;}
+.goldenrod { color:goldenrod;}
+.darkgoldenrod { color:darkgoldenrod;}
+
+.white { color:white;}
+.grey { color:grey;}
+.darkgrey { color:darkgrey;}
+.black { color:black;}
+
+
+
+
+.card img.attachment-post-thumbnail {
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.w-90 {
+  width: 90% !important;
+}
