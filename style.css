@@ -1,16 +1,16 @@
 /*
 Theme Name: Simple Bootstrap 4
-Theme URI: https://wordpress.org/themes/simplebootstrap4/
+Theme URI: https://www.sauksie.fr
 Author: Benoit Adam & Numa Krouchi
-Author URI: https://wordpress.org/
+Author URI: https://www.spiralstatic.eu
 Description: Simple Bootstrap 4 is a basic theme. It started as a school project.
 Version: 0.1
 Requires at least: 5.3.2
 Requires PHP: 5.2.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: simplebootstrap
-Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: simple_bootstrap_4
+Tags: one-column, two-columns, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -52,3 +52,98 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .w-90 {
   width: 90% !important;
 }
+
+
+
+.alignleft { 
+  margin-left: -31rem;
+}
+
+.alignright { 
+  margin-right: -31rem;
+}
+
+.aligncenter {
+  margin:auto;
+}
+
+
+.bypostauthor > .comment-body > .comment-meta > .comment-author .avatar {
+	border: 1px solid orange;
+	padding: 2px;
+}
+
+
+
+
+.wp-caption,
+.gallery-caption {
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  /* bottom: -60px;*/
+  transition: 0.5s;
+  bottom: 0;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+  padding: 15px;
+  margin: 0;
+}
+
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
+
+
+/* ***** FOOTER ***** */
+
+footer{
+	background-color: #343a40;
+	color:#f8f9fa;
+  }
+  
+  footer a{
+	color:#f8f9fa;
+  }
+  
+  footer a:hover{
+	color:#f8f9fa;
+  }
+  
