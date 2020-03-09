@@ -17,14 +17,14 @@
 
                             <?php
                             $defaults = array(
-                                'before'           => '<p>' . __('Pages:', 'twentyfourteen'),
+                                'before'           => '<p>' . __('Pages:', ' simplebootstrap4'),
                                 'after'            => '</p>',
                                 'link_before'      => '',
                                 'link_after'       => '',
                                 'next_or_number'   => 'number',
                                 'separator'        => ' ',
-                                'nextpagelink'     => __('Next page', 'twentyfourteen'),
-                                'previouspagelink' => __('Previous page', 'twentyfourteen'),
+                                'nextpagelink'     => __('Next page', ' simplebootstrap4'),
+                                'previouspagelink' => __('Previous page', ' simplebootstrap4'),
                                 'pagelink'         => '%',
                                 'echo'             => 1
                             );

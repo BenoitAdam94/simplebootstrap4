@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/style.css">
+    <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/style.css">
 
     <title><?php wp_title('-', true, 'right') ?></title>
 
@@ -20,7 +20,10 @@
     <header class="container-fluid">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="<?php form_option( 'siteurl' ); ?>"><?php bloginfo('name');?></a>
+            <a class="navbar-brand" href="<?php form_option('siteurl'); ?>">
+                <?php                    the_custom_logo();                ?>
+                <?php bloginfo('name'); ?>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
