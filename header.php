@@ -20,31 +20,67 @@
     <header class="container-fluid">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="<?php form_option('siteurl'); ?>">
-                <?php                    the_custom_logo();                ?>
-                <?php bloginfo('name'); ?>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <?php the_custom_logo(); ?>
+            &nbsp;
+            <?php bloginfo('name'); ?>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
+			 <span class="navbar-toggler-icon"></span>
+		   </button>
+           
+
+
             <?php
-            wp_nav_menu([
-                'menu'            => 'principal',
-                'theme_location'  => 'top',
-                'container'       => 'div',
-                'container_id'    => 'bs4navbar',
-                'container_class' => 'collapse navbar-collapse',
-                'menu_id'         => false,
-                'menu_class'      => 'navbar-nav mr-auto',
-                'depth'           => 2,
-                'fallback_cb'     => 'bs4navwalker::fallback',
-                'walker'          => new bs4navwalker()
-            ]);
+            
+            
+            
+            if (has_nav_menu('primary')) {
+
+
+                wp_nav_menu(
+                    array(
+
+                        'theme_location'  => 'top',
+                        'container'       => 'div',
+                        'container_id'    => 'bs4navbar',
+                        'container_class' => 'collapse navbar-collapse',
+                        'menu_id'         => false,
+                        'menu_class'      => 'navbar-nav mr-auto',
+                        'depth'           => 2,
+                        'fallback_cb'     => 'bs4navwalker::fallback',
+                        'theme_location' => 'primary',
+                        'walker'          => new bs4navwalker()
+                    )
+                );
+            } elseif (!has_nav_menu('expanded')) {
+
+                echo 'else';
+
+                wp_list_pages(
+                    array(
+                        'match_menu_classes' => true,
+                        'show_sub_menu_icons' => true,
+                        'title_li' => false,
+                        'walker'          => new bs4navwalker()
+                    )
+                );
+            }
             ?>
-            <div class="d-none d-lg-block">
-                <?php echo get_bloginfo('description'); ?>
-            </div>
         </nav>
-        
+        <div class="d-none d-lg-block">
+            <?php // echo get_bloginfo('description'); 
+            ?>
+        </div>
+
+
+
+
+
     </header>
+
     <main>
+        <?php if (is_active_sidebar('region-footer')) :
+
+        endif;
+        ?>

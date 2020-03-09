@@ -41,6 +41,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 
 
+.custom-logo {
+	height:50px;
+	width: 50px;
+}
+
 
 .card img.attachment-post-thumbnail {
     width: 100%;
@@ -72,9 +77,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	border: 1px solid orange;
 	padding: 2px;
 }
-
-
-
 
 .wp-caption,
 .gallery-caption {
@@ -131,11 +133,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	/* Above WP toolbar. */
 }
 
-
 /* ***** FOOTER ***** */
 
 footer{
-	background-color: #343a40;
+	background-color: #5f666d;
 	color:#f8f9fa;
   }
   
@@ -147,3 +148,35 @@ footer{
 	color:#f8f9fa;
   }
   
+
+/************************************************
+Social Media
+************************************************/
+
+.social-icons li {
+	float: left;
+	display: block;
+	margin: 5px;
+	padding: 5px;
+}
+
+.social-icons li a {
+	font-size: 40px;
+	width:32px;
+}
+
+.social-icons li a:hover {
+	border-radius: 4px;
+	background: #444;
+	background: rgba(255, 255, 255, 0.24);
+}
+
+.social-icons li a span {
+	display: none;
+}
+
+.social-icons li a[href*="facebook.com"]::before		{ content: url(social-icons/32x32/facebook.png) }
+.social-icons li a[href*="twitter.com"]::before 		{ content: url(social-icons/32x32/twitter.png) }
+.social-icons li a[href*="linkedin.com"]::before	 	{ content: url(social-icons/32x32/linkedin.png) }
+.social-icons li a[href*="github.com"]::before		 	{ content: url(social-icons/32x32/github.png) }
+.social-icons li a[href*="instagram.com"]::before		{ content: url(social-icons/32x32/instagram.png) }
