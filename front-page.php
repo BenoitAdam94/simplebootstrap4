@@ -2,7 +2,6 @@
 <!-- DEBUT DE MAIN -->
 <div class="container">
     <div class="row">
-        <p>FRONT-PAGE</p>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="col-md-4 card justify-content-center">
                     <div class="card w-90">

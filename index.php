@@ -14,7 +14,25 @@
                                 </a>
                             </h2>
                             <p class="card-text"><?php the_excerpt(); ?></p>
-                            
+
+                            <?php
+                            $defaults = array(
+                                'before'           => '<p>' . __('Pages:', ' simplebootstrap4'),
+                                'after'            => '</p>',
+                                'link_before'      => '',
+                                'link_after'       => '',
+                                'next_or_number'   => 'number',
+                                'separator'        => ' ',
+                                'nextpagelink'     => __('Next page', ' simplebootstrap4'),
+                                'previouspagelink' => __('Previous page', ' simplebootstrap4'),
+                                'pagelink'         => '%',
+                                'echo'             => 1
+                            );
+
+                            wp_link_pages($defaults);
+
+                            ?>
+
                             <a href="<?php the_permalink(); ?>" class="btn btn-primary"><span>&#x1F4F0</span></a>
                         </div>
                     </div>
