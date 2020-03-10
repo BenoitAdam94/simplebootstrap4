@@ -6,14 +6,11 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/style.css">
+    
+    
+    
 
-    <title><?php wp_title('-', true, 'right') ?></title>
-
-    <?php wp_head(); // intégrer des elements indispensable à Wordpress comme les fichiers CSS, JS, Admin bar 
-    ?>
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -26,15 +23,15 @@
             <?php bloginfo('name'); ?>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs4navbar" aria-controls="bs4navbar" aria-expanded="false" aria-label="Toggle navigation">
-			 <span class="navbar-toggler-icon"></span>
-		   </button>
-           
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
 
 
             <?php
-            
-            
-            
+
+
+
             if (has_nav_menu('primary')) {
 
 
@@ -67,11 +64,11 @@
                 );
             }
             ?>
+            <div class="d-none d-lg-block">
+                <?php echo get_bloginfo('description'); ?>
+            </div>
         </nav>
-        <div class="d-none d-lg-block">
-            <?php // echo get_bloginfo('description'); 
-            ?>
-        </div>
+
 
 
 
@@ -81,6 +78,8 @@
 
     <main>
         <?php if (is_active_sidebar('region-footer')) :
+
+        echo '';
 
         endif;
         ?>

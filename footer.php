@@ -33,14 +33,7 @@
                 ?>
            </div>
        </div>
-   </footer>
-
-
-
-   <!-- Optional JavaScript -->
-   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/js/jquery-3.4.1.slim.min.js"></script>
-   <script src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/js/bootstrap.min.js"></script>
+   </footer>   
    </body>
 
    </html>

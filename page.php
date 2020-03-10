@@ -12,6 +12,37 @@
                         <?php the_content(); ?>
                     </div>
 
+
+                    <!-- List Comments -->
+                    <div>
+                        <?php comments_template(); ?>
+                        <ol class="comment-list">
+                            <?php
+                            wp_list_comments(array(
+                                'avatar_size' => 60,
+                                'max_depth'   => 5,
+                                'style'       => 'ol',
+                                'short_ping'  => true,
+                                'type'        => 'comment',
+                            ));
+                            ?>
+                        </ol>
+                    </div>
+                    <div>
+                        <?php comments_template(); ?>
+                    </div>
+
+                    <div>
+                        <?php comment_form(); ?>
+                    </div>
+
+                    <div>
+                        <?php if (is_singular()) wp_enqueue_script("comment-reply"); ?>
+                    </div>
+                    <!-- Pagination -->
+                    <div>
+                        <?php paginate_comments_links(); ?>
+                    </div>
                 </div>
 
 

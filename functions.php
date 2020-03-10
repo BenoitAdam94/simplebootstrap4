@@ -8,6 +8,56 @@ add_theme_support('custom-background');
 
 
 
+/* TITLE */
+
+add_action('after_setup_theme', 'theme_functions');
+function theme_functions()
+{
+
+    add_theme_support('title-tag');
+}
+
+add_filter('wp_title', 'custom_titles', 10, 2);
+function custom_titles($title, $sep)
+{
+
+    //Check if custom titles are enabled from your option framework
+    if (ot_get_option('enable_custom_titles') === 'on') {
+        //Some silly example
+        $title = "Some other title" . $title;;
+    }
+
+    return $title;
+}
+
+/* SCRIPT */
+
+wp_enqueue_script( 'jquery-ui-core' );
+
+$js_directory = get_template_directory_uri() . '/assets/js/';
+wp_register_script( 'bootstrap', $js_directory . 'bootstrap.min.js', 'jquery', '1.0' );
+
+wp_enqueue_script( 'bootstrap' );
+
+wp_enqueue_style('scripts', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), NULL, NULL);
+
+wp_enqueue_style('custom', get_template_directory_uri() . '/style.css', array(), NULL, NULL);
+
+/*
+function custom_enqueue_scripts()
+{
+    // JS
+    wp_enqueue_script('scripts', get_template_directory_uri() . 'assets/js/jquery-3.4.1.slim.min.js', array('jquery'),  NULL, true);
+    wp_enqueue_script('scripts', get_template_directory_uri() . 'assets/js/bootstrap.min.js', array('bootstrap'),  NULL, true);
+
+    // CSS
+    wp_enqueue_style('custom', get_template_directory_uri() . 'assets/css/bootstrap.min.css', array(), NULL, NULL);
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_scripts', 101);
+*/
+
+/* CONTAINER */
+
 if (!isset($content_width)) $content_width = 900;
 
 
@@ -37,5 +87,3 @@ function simplebootstrap4_init_sidebar() // fonction qui contient la déclaratio
 }
 
 wp_get_sidebars_widgets();
-?>
-
