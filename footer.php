@@ -5,7 +5,7 @@
            <div class="col-md-4 p-3 d-flex justify-content-center align-item align-items-center">
 
 
-               <img src="<?php header_image(); ?>" alt="">
+               <img src="<?php header_image(); ?>" alt="" class="img-fluid">
 
 
 
@@ -21,7 +21,7 @@
 
            </div>
            <div class="col-md-4 p-3 d-flex justify-content-center align-item align-items-center">
-
+                
                <?php
                 wp_nav_menu([
                     'container_class' => 'social-menu',

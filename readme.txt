@@ -6,6 +6,23 @@ It started as a school project at IFOCOP school in Paris
 
 
 
-I
 
-https://www.flaticon.com/
+External ressources used (everything is GPL Friendly)
+
+
+
+BootStrap 4
+
+https://getbootstrap.com/
+
+BootStrap 4 Navwalker :
+
+https://github.com/nicgene/bs4navwalker
+
+jQuery :
+
+https://jquery.com/
+
+SVG images are from FONT Awesome
+
+https://fontawesome.com/

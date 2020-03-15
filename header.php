@@ -6,9 +6,9 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    
-    
-    
+
+
+
 
     <?php wp_head(); ?>
 </head>
@@ -37,7 +37,6 @@
 
                 wp_nav_menu(
                     array(
-
                         'theme_location'  => 'top',
                         'container'       => 'div',
                         'container_id'    => 'bs4navbar',
@@ -50,20 +49,15 @@
                         'walker'          => new bs4navwalker()
                     )
                 );
-            } elseif (!has_nav_menu('expanded')) {
+            } else {
+            ?>
 
-                echo 'else';
+                <div id="bs4navbar" class="collapse navbar-collapse"></div>
 
-                wp_list_pages(
-                    array(
-                        'match_menu_classes' => true,
-                        'show_sub_menu_icons' => true,
-                        'title_li' => false,
-                        'walker'          => new bs4navwalker()
-                    )
-                );
+            <?php
             }
             ?>
+            
             <div class="d-none d-lg-block">
                 <?php echo get_bloginfo('description'); ?>
             </div>
@@ -79,7 +73,7 @@
     <main>
         <?php if (is_active_sidebar('region-footer')) :
 
-        echo '';
+            echo '';
 
         endif;
         ?>

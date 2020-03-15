@@ -30,7 +30,7 @@
 
 
                     <!-- List Comments -->
-                    <div>
+                    <div class="border">
                         <?php comments_template(); ?>
                         <ol class="comment-list">
                             <?php
@@ -48,8 +48,10 @@
                         <?php comments_template(); ?>
                     </div>
 
-                    <div>
-                        <?php comment_form(); ?>
+                    <div class="border">
+                        <?php comment_form(array(
+                            'class_submit' => 'btn btn-primary mb-2',
+                        )); ?>
                     </div>
 
                     <div>
