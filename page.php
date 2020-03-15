@@ -2,7 +2,6 @@
 <!-- DEBUT DE MAIN -->
 <div class="container">
 	<div class="row">
-		<p>PAGE</p>
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<div class="col-md-12">
 					<h2 class="card-title">
