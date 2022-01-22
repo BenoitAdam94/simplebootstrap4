@@ -14,6 +14,8 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php wp_body_open(); ?>
+	    
 	<header class="container-fluid">
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">

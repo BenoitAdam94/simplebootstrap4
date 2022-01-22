@@ -1,12 +1,15 @@
 === Simple BootStrap 4 ===
-Contributors: Benoit SAKOTE & Numa Krouchi
-Tags: left-sidebar, fixed-width, custom-background
+Contributors: benoitadam
+Tags: fixed-width, custom-background
 Requires at least: 5.0
+Tested up to: 5.4
 Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 It's a simple and lightweight bootstrap 4 theme.
+
+Note : Only support level 2 sub-menus.
 
 It started as a school project at IFOCOP school in Paris
 
@@ -22,6 +25,13 @@ Why making/using this theme when there is already WP Bootstrap Starter ?
 Well, at first this theme was used to learn making theme. WP Bootstrap is a very good theme indeed, but it weight more than 10Mb, and our theme is currently at 1Mb.
 
 == Changelog ==
+
+= 0.4 =
+
+Functions.php improvement
+wp_upper_body added
+remove readme.md
+updated readme.txt
 
 
 = 0.3 =
@@ -46,14 +56,16 @@ Initial Release
 
 
 BootStrap 4
-
-https://getbootstrap.com/
-
-BootStrap 4 Navwalker :
-
-https://github.com/nicgene/bs4navwalker
-
-
-SVG images are from FONT Awesome
-
-https://fontawesome.com/
+	License: MIT License, https://opensource.org/licenses/MIT
+	Source: https://getbootstrap.com/
+	
+BootStrap 4 Navwalker
+	Author: nicgene
+	License: GPL v2, https://github.com/nicgene/bs4navwalker/blob/master/LICENSE
+	Source: https://github.com/nicgene/bs4navwalker
+	Used for navbar
+	
+FONT Awesome
+	License: https://fontawesome.com/license/free
+	Source: https://fontawesome.com/
+	Used for social icons	
